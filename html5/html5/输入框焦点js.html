@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入框焦点</title>
+    <style>
+        .tip{
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="test" class="tip" value="请输入内容" />
+    <script>
+        (function(){
+            var test = document.getElementById('test'),
+                REG = /(^|\s+)tip(\s+|$)/,
+                TIP_CLS = 'tip',
+                TIP_STR = '请输入内容';
+            if(test.addEventListener){
+                test.addEventListener('focus',function(){
+                    var classname = this.className;
+                    if(classname.match(REG)){
+                        this.value = '';
+                        this.className = classname.replace(TIP_CLS,'');
+                    }
+                },false);
+                test.addEventListener('blur',function(){
+                    if(this.value.length == 0){
+                        this.value = TIP_STR;
+                        this.className += '' + TIP_CLS;
+                    }
+                },false);
+            }else if(test.attachEvent()){
+                test.attachEvent('onfocus',function(){
+                    var classname = this.className;
+                    if(classname.match(REG)){
+                        this.value = '';
+                        this.className = classname.replace(TIP_CLS,'');
+                    }
+                });
+                test.attachEvent('onblur',function(){
+                    if(this.value.length == 0){
+                        this.value = TIP_STR;
+                        this.className += '' + TIP_CLS;
+                    }
+                });
+            }
+
+        })();
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

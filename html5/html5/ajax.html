@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+    <script>
+        function CreateXmlHttp() {
+            //标准浏览器创建XmlHttpRequest对象
+            if (window.XmlHttpRequest) {
+                xmlhttp = new XmlHttpRequest();
+            }
+            //IE浏览器创建XmlHttpRequest对象
+            if (window.ActiveXObject) {
+                try {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                catch (e) {
+                    try {
+                        xmlhttp = new ActiveXObject("msxml2.XMLHTTP");
+                    }
+                    catch (ex) { }
+                }
+            }
+        }
+        function Ustbwuyi() {
+            var data = document.getElementById("username").value;
+            CreateXmlHttp();
+            if (!xmlhttp) {
+                alert("创建xmlhttp对象异常！");
+                return false;
+            }
+            xmlhttp.open("POST", url, false);
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4) {     //请求状态5个，0 = 未初始化，1 = 正在加载，2 = 已加载，3 = 交互中，4 = 完成
+                    document.getElementById("user1").innerHTML = "数据正在加载...";
+                    if (xmlhttp.status == 200) {      //服务器的HTTP状态码
+                        document.write(xmlhttp.responseText);
+                    }
+                }
+            }
+            xmlhttp.send();
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table</title>
+</head>
+<body>
+<script>
+    var table= document.createElement('table');
+    table.border=1;
+    table.width='100%';
+//    table.heigh='1200px';
+    var tbody = document.createElement('tbody');
+    table.appendChild(tbody);
+    var row1 = document.createElement('tr');
+    tbody.appendChild(row1);
+    var cell1 = document.createElement('td');
+    cell1.appendChild(document.createTextNode('pajg'));
+    row1.appendChild(cell1);
+    var cell2 = document.createElement('td');
+    cell2.appendChild(document.createTextNode('pajgdfg'));
+    row1.appendChild(cell2);
+    document.body.appendChild(table);
+</script>
+</body>
+</html>

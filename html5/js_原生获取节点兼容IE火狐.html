@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+
+</head>
+<body>
+<div class="test">
+    hello!
+</div>
+<input type="button" value="show" onclick="showMsg()" />
+
+<script type="text/javascript">
+    function getClass(tagName, className) {  //第一个参数 表示是className是所属那个dom标签下,这样为了提高检索效率
+        //如果是火狐择调用火狐的getElementsByClassName 内置函数
+        if (document.getElementsByClassName) {
+            return document.getElementsByClassName(className)
+        }
+        else {
+            var nodes = document.getElementsByTagName(tagName),
+                    ret = []
+            for (i = 0; i < nodes.length; i++) {
+                if (hasClass(nodes[i], className)) { ret.push(nodes[i]) }
+            }
+            return ret;
+        }
+    }
+    function hasClass(node, className) {
+        var names = node.className.split(/\s+/) //这个正则表达式是因为class可以有多个,判断是否包含
+        for (i = 0; i < names.length; i++) {
+            if (names[i] == className) return true;
+        }
+        return false;
+    }
+    function showMsg() {
+        var tag = getClass('div', 'test');
+        for (var i = 0; i < tag.length; i++) {
+            alert(tag[i].innerText);
+        }
+    }
+</script>
+</body>
+</html>

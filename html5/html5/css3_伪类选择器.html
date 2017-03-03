@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3_root</title>
+    <style>
+        :root{
+            background-color: #4cae4c;
+        }
+        body *:not(h1){
+            background-color: yellow;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        :empty{
+            background-color: red;
+        }
+        :target{
+            background-color: #66512c;
+        }
+    </style>
+</head>
+<body>
+    <h1>伪类选择器</h1>
+    <p>伪类选择器伪类选择器伪类选择器伪类选择器伪类选择器伪类选择器伪类选择器伪类选择器</p>
+    <div></div>
+    <p id="menu">
+        <a href="#tex1">aaaaaa</a>
+        <a href="#tex2">aaaaaa</a>
+        <a href="#tex3">aaaaaa</a>
+        <a href="#tex4">aaaaaa</a>
+    </p>
+    <div id="tex1">nihao</div>
+    <div id="tex2">nihao2</div>
+    <div id="tex3">nihao3</div>
+    <div id="tex4">nihao4</div>
+
+</body>
+</html>

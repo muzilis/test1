@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animation</title>
+    <style>
+        #div1{
+            width: 400px;
+            height: 150px;
+            background: #E7F0EF;
+            color:black;
+            margin: 50px auto;
+        }
+        #div1:hover{
+            -moz-animation: changColor 6s ease-in-out .2s;
+            -webkit-animation: changColor 6s ease-in-out .2s;
+            -o-animation: changColor 6s ease-in-out .2s;
+            animation: changColor 6s ease-in-out .2s;
+        }
+        @keyframes changColor{
+            0%{
+                background: #ff0000;
+            }
+            20%{
+                background: #ff00ff;
+            }
+            40%{
+                background:#A48992;
+            }
+            60%{
+                background:#FFF900;
+            }
+            80%{
+                background:#6D87A0;
+            }
+            100%{
+                background: #FFB89A;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">鼠标移动到我这里，查看动画效果</div>
+</body>
+</html>

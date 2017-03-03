@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数传参，改变Div任意属性的值</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+        }
+        #input {
+            padding: 10px;
+            text-align: center;
+            line-height: 25px;
+        }
+        #result {
+            width: 150px;
+            height: 150px;
+            padding: 10px;
+            margin: 0 auto;
+            color: #fff;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="input">
+        <label>属性名：<input type="text" id="style-name" value="background"></label><br>
+        <label>属性值：<input type="text" id="style-value" value="blue"></label><br>
+        <input type="submit" id="set" value="确定">
+        <input type="submit" id="reset" value="重置">
+    </div>
+    <div id="wrap">
+        <div id="result">在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果。</div>
+    </div>
+    <script>
+        function changStyle(element,styleName,styleValue){
+            element.style[styleName] = styleValue;
+        }
+        var set = document.getElementById('set');
+        var reset = document.getElementById('reset');
+        set.addEventListener('click',function(){
+            var style_name = document.getElementById('style-name').value;
+            var style_value = document.getElementById('style-value').value;
+            var result = document.getElementById('result');
+            changStyle(result,style_name,style_value);
+        },false);
+        reset.addEventListener('click',function(){
+            var result = document.getElementById('result');
+            result.style.cssText = '';
+        },false);
+    </script>
+</body>
+</html>

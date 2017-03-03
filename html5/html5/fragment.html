@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fragment</title>
+</head>
+<body>
+    <div id="parent"></div>
+    <script>
+        var oParent = document.getElementById('parent');
+//        for(var i=0;i<10;i++){
+//            var child = document.createElement('div');
+//            var text = document.createTextNode('this is a text');
+//            child.appendChild(text);
+//            oParent.appendChild(child);
+//            console.log(i);
+//        }
+        var fragment = document.createDocumentFragment();
+        for(i=0;i<10;i++){
+            var child = document.createElement('div');
+            var text = document.createTextNode('this is a text');
+            child.appendChild(text);
+            fragment.appendChild(child);
+            console.log(i);
+
+        }
+       oParent.appendChild(fragment);
+    </script>
+</body>
+</html>

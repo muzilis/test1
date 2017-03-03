@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无刷新文件上传</title>
+</head>
+<body>
+    <form action=""  method="get">
+        <input type="button" fname="uimg" funstr="function(){document.title='图片正在上传……';}" funbak="ddd" furl="a.php" value="本地上传">
+    </form>
+    <script type="text/javascript">
+        function ddd(da){
+
+            if(da.ztai){
+                document.title='上传完成';
+                ui.success('上传成功保存地址为'+da.url);
+            }
+        }
+    </script>
+
+
+
+
+</body>
+</html>

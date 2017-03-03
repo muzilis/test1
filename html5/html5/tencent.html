@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tencent</title>
+</head>
+<body>
+    <script>
+
+        var mylocation = {
+                         'protocol':'http',
+                         'hostname':'',
+                         'pathname':'',
+                         'query':''
+            }
+             var url = 'http://www.qq.com/index.html?key1=1&key2=2';
+             var str=url.replace(/http\:\/\//,"");
+             var a=str.split(/(\/)|(\?)/g);
+            mylocation.hostname=a[0];
+             var arr=a[1].split("?");
+             mylocation.pathname=arr[0];
+             mylocation.query=arr[1];
+             console.log(mylocation);
+    </script>
+</body>
+</html>

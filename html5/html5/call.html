@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call()</title>
+</head>
+<body>
+<script>
+//    function aa(content){
+//        console.log('From '+this+' hello '+content);
+//    }
+//    aa.apply('Bob',["world"]);
+
+
+
+
+
+
+    //bind()
+
+//    function aa(y){
+//        return this.x + y;
+//    }
+//    var o  = {
+//        x:1
+//    };
+//    var g = aa.bind(o);
+//    console.log(g(2));
+
+//    var sum = function(x,y){
+//        return x + y;
+//    }
+//    var succ = sum.bind(null,1);
+//    alert(succ(2));
+
+
+
+
+
+//    function f(y,z){
+//        return this.x + y + z;
+//    }
+//    var g = f.bind({x:1},2);
+//    console.log(g(3));
+
+
+
+
+    function SuperType(name){
+        this.name = name;
+    }
+    function SubType(){
+        SuperType.call(this,"Lisi");
+        this.age = 20;
+    }
+    var sub = new SubType();
+    alert(sub.name);
+    alert(sub.age);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

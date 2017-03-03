@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽原生兼容</title>
+    <style>
+        #box1,#box2{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color:greenyellow ;
+        }
+        #box2{
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script>
+
+        //兼容性良好的添加鼠标事件
+        var eventUnite = {
+            //添加事件
+            addEvent: function(element,type,fn){
+                if(element.addEventListener){
+                    element.addEventListener(type,fn,false)
+                }else if(element.attachEvent){
+                    element.attachEvent("on"+type,fn)
+                }else{
+                    element["on"+type]=fn;
+                }
+            },
+            //阻止默认事件
+            preventDefault: function(event){
+                if(event.preventDefault){
+                    event.preventDefault();
+                }else{
+                    event.returnValue=false;
+                }
+            },
+            //获取事件对象
+            getEvent: function(event){
+                return event || window.event;
+            },
+            //获取目标元素
+            getTarget: function(event){
+                return event.target || event.srcElement;
+            },
+            //移除事件
+            removeEvent: function(element,type,fn){
+                if(element.removeEventListener){
+                    element.removeEventListener(type,fn,false);
+                }else if(element.detachEvent){
+                    element.detachEvent("on"+type,fn)
+                }else{
+                    element["on"+type]=null;
+                }
+            },
+            //阻止事件源
+            stopEvent: function(event){
+                if(event.stopPropagation){
+                    event.stopPropagation();
+                }else if(event.cancelBubble){
+                    event.cancelBubble=true;
+                }
+            }
+        }
+        var dragging;
+        var drag = function (event){
+            var target;
+            event = eventUnite.getEvent(event);
+            switch(event.type){
+                case "mousedown":
+                    target = eventUnite.getTarget(event);
+                    dragging=target;
+                    disX = event.clientX-target.offsetLeft;
+                    disY = event.clientY-target.offsetTop;
+//                        console.log(disX);
+                    break;
+                case "mousemove":
+                    if(dragging!=undefined){
+                        dragging.style.left =event.clientX- disX +'px';
+//                        console.log(event.clientX);
+                        dragging.style.top =event.clientY- disY + 'px';
+
+                    };
+                    break;
+                case "mouseup":
+                    dragging = undefined;
+                    break;
+            }
+        }
+        //启动拖动函数
+        var fire = function (element){
+            eventUnite.addEvent(element,"mousedown",drag);
+            eventUnite.addEvent(document,"mousemove",drag);
+            eventUnite.addEvent(element,"mouseup",drag);
+//            console.log(123);
+        }
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+
+        fire(box1);
+        fire(box2);
+    </script>
+</body>
+</html>

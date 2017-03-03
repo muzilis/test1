@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+</head>
+<body>
+<!--<script type="text/javascript">-->
+    <!--function Person(name){                             //构造函数-->
+        <!--this.name=name;-->
+    <!--}-->
+    <!--Person.prototype.printName=function() //原型对象-->
+    <!--{-->
+        <!--alert(this.name);-->
+    <!--}-->
+    <!--var person1=new Person('Byron');//实例化对象-->
+    <!--console.log(person1.__proto__);//Person-->
+    <!--console.log(person1.constructor);//自己试试看会是什么吧 function Person(name)-->
+    <!--console.log(Person.prototype);//指向原型对象Person-->
+    <!--var person2=new Person('Frank');-->
+<!--</script>-->
+
+
+    <!--<script>-->
+        <!--var animal = function(){};-->
+        <!--var dog = function(){};-->
+        <!--animal.price = 2000;-->
+        <!--dog.prototype = animal;-->
+        <!--var tidy = new dog();-->
+<!--//        console.log(dog.constructor);-->
+        <!--console.log(Object.getPrototypeOf(tidy));-->
+    <!--</script>-->
+
+    <!--<script>-->
+        <!--var F = function(){};-->
+        <!--var f = new F();-->
+
+        <!--console.log(Object.getPrototypeOf(F)); -->
+    <!--</script>-->
+
+
+    <!--<script>-->
+        <!--function A(name){-->
+            <!--this.name = name;-->
+        <!--}-->
+        <!--function a(){-->
+            <!--A.call(this,"lee");-->
+            <!--this.age = 24;-->
+        <!--}-->
+        <!--var aa = new a();-->
+        <!--alert(aa.name);-->
+<!--//        console.log(aa.name +" "+ aa.age);-->
+        <!--alert(aa.age);-->
+
+
+    <!--</script>-->
+
+    <script>
+//        function A(name){
+//            this.name = name;
+//            this.colors = ['red','white'];
+//        }
+//        A.prototype.sayName = function(){
+//            alert(this.name);
+//        }
+//        function a(name,age){
+//            A.call(this,name);
+//            this.age = age;
+//        }
+//        a.prototype = new A();
+//        a.prototype.constructor = a;
+//        a.prototype.sayAge = function(){
+//            alert(this.age);
+//        }
+//        var aa = new a("lee",24);//实例化
+//        aa.colors.push('black');
+////        alert(aa.colors);
+////        aa.sayName();
+////        aa.sayAge();
+//
+//        var bb = new a("yang",33);
+////        alert(bb.colors);
+////        bb.sayAge();
+//        console.log(aa instanceof a);//true
+//        console.log(aa instanceof A);//true
+//        console.log(a instanceof A);//false
+//        console.log(aa.constructor);//a
+//        console.log(a.constructor);//Function
+//        console.log(A.constructor);//Function
+////        alert(a.constructor===A.constructor);
+
+
+
+
+        function Peason(){
+
+        }
+
+        var p = new Peason();
+
+        Peason.prototype = {
+            constructor:Peason,
+            name:'lisi',
+            age:23,
+            sayName:function(){
+                alert(this.name);
+            }
+        }
+        p.sayName();
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

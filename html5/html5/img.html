@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>img</title>
+</head>
+<body>
+<script src="jquery.js"></script>
+    <script>
+        $(function(){
+            var count = 0;//计数已加载完的图片数量
+            for(var i=0;i<16;i++){
+                var oImg = new Image();
+                oImg.onload = function(){
+                    count++;
+                    if(count == 16){
+
+                    }
+                    $li = $('<li></li>');
+                    $li.append(this);
+                }
+                oImg.src='';
+
+            }
+        });
+
+    </script>
+</body>
+</html>

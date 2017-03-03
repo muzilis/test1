@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq 导航栏高亮</title>
+    <style>
+        ul,li{
+           list-style: none;
+        }
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .box{
+            width: 300px;
+            /*height: 200px;*/
+            background-color: #a0eaff;
+        }
+        .box .menu .level1{
+            width: 100%;
+            background-color: #E7F0EF;
+            border: 1px solid #FFF900;
+            cursor: pointer;
+        }
+        .box .menu .level1 .level2{
+            width: 100%;
+            display: none;
+        }
+        .current{
+            background: #ff0000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <ul class="menu">
+        <li class="level1">
+            <a href="#none">aaaaaaaaa</a>
+            <ul class="level2">
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+            </ul>
+        </li>
+        <li class="level1">
+            <a href="#none">bbbbbbbbbb</a>
+            <ul class="level2">
+                <li>b</li>
+                <li>b</li>
+                <li>b</li>
+                <li>b</li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+
+
+<script src="jquery.js"></script>
+<script>
+    $(function(){
+        $('.level1>a').click(function(){
+//            alert(111);
+            $(this).addClass('current').next().show()
+                    .parent().siblings().children("a").removeClass('current')
+                    .next().hide();
+            return false;
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

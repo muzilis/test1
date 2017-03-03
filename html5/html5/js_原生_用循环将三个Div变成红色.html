@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用循环将三个Div变成红色</title>
+    <style>
+        #container {
+            text-align: center;
+        }
+        div.to-red {
+            display: inline-block;
+            margin-top: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input type="submit" id="submit" value="点击将div变成红色"><br>
+        <div class="to-red"></div>
+        <div class="to-red"></div>
+        <div class="to-red"></div>
+    </div>
+    <script>
+        var sub = document.getElementById('submit');
+        sub.addEventListener('click',function(){
+            var to_red = document.getElementsByClassName('to-red');
+            for(var i=0;i<to_red.length;i++){
+                to_red[i].style.backgroundColor  = 'red';
+            }
+//            alert(111);
+        },false);
+//        var sub = document.getElementById('submit');
+//        sub.addEventListener('click', function() {
+//            var toRedDivs = document.getElementsByClassName('to-red');
+//            for (var i = 0, len = toRedDivs.length; i < len; i++) {
+//                toRedDivs[i].style.backgroundColor = 'red';
+//            }
+//        }, false);
+    </script>
+</body>
+</html>

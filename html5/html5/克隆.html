@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>克隆</title>
+</head>
+<body>
+
+    <script>
+        var A = {
+          create:function(width,height){
+              var a = Object.create(this);
+              a.width = width;
+              a.height = height;
+              return a;
+          },
+          area:function(){
+              return this.width*this.height;
+          }
+        };
+        var aa = A.create(3,4);
+        alert(aa.area());
+//        console.log(aa);
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

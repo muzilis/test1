@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>attr</title>
+</head>
+<body>
+    <div id="div">aaaaa</div>
+    <script>
+        var attr = document.createAttribute('align');
+        var oDiv = document.getElementById('div');
+        attr.value='center';
+        oDiv.setAttributeNode(attr);
+//        alert()
+    </script>
+</body>
+</html>

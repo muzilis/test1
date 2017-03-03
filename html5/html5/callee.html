@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>callee</title>
+</head>
+<body>
+<script>
+//    function aa(){
+//        alert(arguments.callee);
+//    }
+//    aa();
+    function aa(a1,a2){
+        if(arguments.length == arguments.callee.length){
+            alert("ok");//arguments.callee.length形参的数量
+        }else{
+            alert('fail');
+        }
+    }
+    aa(1);
+</script>
+</body>
+</html>

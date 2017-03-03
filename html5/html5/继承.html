@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+    <script>
+        构造函数 通过call
+        function SuperType(name){
+            this.name = name;
+        }
+        function SubType(){
+            SuperType.call(this,"Lisi");
+            this.age = 20;
+        }
+        var sub = new SubType();
+        alert(sub.name);
+        alert(sub.age);
+
+
+        通过prototype
+        function SuperType(){
+            this.colors = ["red","blue"];
+        }
+        function SubType(){
+
+        }
+        SubType.prototype = new SuperType();
+
+        var sub = new SubType();
+
+        alert(sub.colors);
+
+
+
+    </script>
+</body>
+</html>

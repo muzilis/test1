@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js原生标签</title>
+</head>
+<body>
+    <script>
+        var map = {};
+        function dfs(node) {
+            if(node.nodeType === 1) {
+                var tagName = node.tagName;
+                map[tagName] = map.hasOwnProperty(tagName) ? map[tagName] + 1 : 0;
+                var children = node.childNodes;
+                for(var i = 0, len = children.length; i < len; i++) {
+                    dfs(children[i]);
+                }
+            }
+        }
+        dfs(document.body);
+        console.log(map);
+    </script>
+</body>
+</html>

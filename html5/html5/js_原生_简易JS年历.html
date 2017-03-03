@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易JS年历</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma;
+        }
+        .clearfix:after {
+            clear: both;
+            display: block;
+            visibility: hidden;
+            height: 0;
+            line-height: 0;
+            content: '';
+        }  /*清楚浮动*/
+        #container {
+            width: 248px;
+            margin: 10px auto;
+            border: solid 1px #eaeaea;
+            padding: 10px 0 0 10px;
+            background-color: #eaeaea;
+        }
+        #cal {
+            list-style: none;
+        }
+        #cal li {
+            float: left;
+            width: 40px;
+            height: 40px;
+            padding: 5px;
+            border: solid 1px;
+            margin: 0 10px 10px 0;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            opacity: 0.7;
+        }
+        #cal li.current {
+            background-color: #fff;
+            color: #F69;
+            opacity: 1;
+        }
+        #holiday {
+            padding: 5px;
+            border: solid 1px #fff;
+            margin: 0 10px 10px 0;
+            font-size: 12px;
+            background-color: #F1F1F1;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="cal" class="clearfix">
+            <li class="current"><strong>1</strong><br>JAN</li>
+            <li><strong>2</strong><br>FEB</li>
+            <li><strong>3</strong><br>MAR</li>
+            <li><strong>4</strong><br>APR</li>
+            <li><strong>5</strong><br>MAY</li>
+            <li><strong>6</strong><br>JUN</li>
+            <li><strong>7</strong><br>JUL</li>
+            <li><strong>8</strong><br>AUG</li>
+            <li><strong>9</strong><br>SEP</li>
+            <li><strong>10</strong><br>OCT</li>
+            <li><strong>11</strong><br>NOV</li>
+            <li><strong>12</strong><br>DEC</li>
+        </ul>
+        <div id="holiday">
+            <h2 id='htitle'>1月节日</h2>
+            <p id="hdetail">元旦：1月1日至3日放假三天。</p>
+        </div>
+    </div>
+    <script>
+        var cal = document.getElementById('cal');
+        var holidayText = [
+            "元旦：1月1日至3日放假三天。",
+            "春节：2月2日至8日放假7天。",
+            "妇女节：3月8日妇女节，与我无关。",
+            "清明节：4月3日至5日放假3天",
+            "劳动节：4月30日至5月2日放假3天。",
+            "端午节：6月4日至6日放假3天。",
+            "小暑：7月7日小暑。不放假。",
+            "七夕节：8月6日七夕节。不放假。",
+            "中秋节：9月10日至12日放假3天。",
+            "国庆节：10月1日至7日放假7天。",
+            "立冬：11月8日立冬。不放假。",
+            "艾滋病日:12月1日<br />         废除奴隶制国际日:12月2日。"
+        ]
+
+        function delegateEvent(delegateElement, targetTag, eventName, handler) {
+            delegateElement.addEventListener(eventName, function (event) {
+                if (event.target.nodeName.toLowerCase() === targetTag.toLowerCase()) {
+                    return handler(event);
+                }
+            }, false);
+        }
+
+        function hasClass(element, className) {
+            return (new RegExp('(\\s|^)' + className + '(\\s|$)')).test(element.className);
+        }
+
+        function addClass(element, newClassName) {
+            if (!hasClass(element, newClassName)) {
+                element.className += element.className ? (' ' + newClassName) : newClassName;
+            }
+        }
+
+        function removeClass(element, oldClassName) {
+            if (hasClass(element, oldClassName)) {
+                element.className = element.className.replace((new RegExp('(\\s|^)'+oldClassName+'(\\s|$)')), ' ').trim();
+            }
+        }
+
+        delegateEvent(cal,'li','mouseover',function(event){
+            var target = event.target;
+            console.log(target);
+            var calItems = cal.children;
+            var holidayTitle = document.getElementById('htitle');
+            var holidayDetail = document.getElementById('hdetail');
+            for(var i=0;i<calItems.length;i++){
+                removeClass(calItems[i],'current');
+                if(calItems[i] === target){
+                    var currentIndex = i;
+                }
+            }
+                addClass(target,'current');
+                holidayTitle.innerHTML = holidayTitle.innerHTML.replace(/\d+/, currentIndex+1);
+                holidayDetail.innerHTML = holidayText[currentIndex];
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+    <ul id="ul">
+        <li>111111</li>
+        <li>222222</li>
+        <li>333333</li>
+    </ul>
+
+    <script>
+        window.onload = function(){
+            var oUl = document.getElementById('ul');
+            var aLi = oUl.getElementsByTagName('li');
+            for(var i=0;i<aLi.length;i++){
+                (function(index){
+                    aLi[index].onclick = function(){
+                        alert(index);
+                    }
+                })(i);
+            }
+        }
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

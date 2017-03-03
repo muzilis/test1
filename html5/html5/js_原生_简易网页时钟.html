@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_原生_简易网页时钟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #clock {
+            width: 300px;
+            margin: 10px auto;
+            padding: 20px 0;
+            font-size: 16px;
+            text-align: center;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        #clock span {
+            width: 80px;
+            margin: 0 10px;
+            padding: 0 10px;
+            border: 2px solid #b4b4b4;
+            background: #fbfbfb;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <span></span>
+        点
+        <span></span>
+        分
+        <span></span>
+        秒
+    </div>
+    <script>
+        var spans = document.getElementById('clock').getElementsByTagName('span');
+
+        setInterval(function () {
+            var now = new Date();
+            var timeArr = [now.getHours(), now.getMinutes(), now.getSeconds()];
+            for (var i = 0; i < timeArr.length; i++) {
+                spans[i].innerHTML = format(timeArr[i]);
+//                console.log();
+
+            }
+        } , 1000);
+
+        function format (num) {
+            return num.toString().replace(/^(\d)$/, '0$1');
+        }
+
+
+    </script>
+</body>
+</html>

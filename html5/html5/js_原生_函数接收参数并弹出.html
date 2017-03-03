@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数接收参数并弹出</title>
+    <style>
+        #container{
+            text-align: center;
+            line-height:30px;
+        }
+    </style>
+</head>
+<body>
+        <form id="container">
+            <input type="text" id="text0" value="北京市"><br>
+            <input type="text" id="text1" value="朝阳区"><br>
+            <input type="submit" id="submit" value="传参">
+        </form>
+        <script>
+//            var oSub = document.getElementById('submit');
+////            function alert11(val11,val21){
+////                alert(val11);
+////                alert(val21);
+////            }
+//            function alertMessage(text0, text1) {
+//                alert(text0);
+//                alert(text1);
+//            }
+//            oSub.addEventListener('click',function(){
+//                text0 = document.getElementById('test0').value;
+//                text1 = document.getElementById('test1').value;
+//                alertMessage(text0,text1);
+//
+//            },false);
+            var sub = document.getElementById('submit');
+
+//            function alertMessage(text0, text1) {
+//                alert(text0);
+//                alert(text1);
+//            }
+
+            sub.addEventListener('click', function() {
+                text0 = document.getElementById('text0').value;
+                text1 = document.getElementById('text1').value;
+//                alertMessage(text0, text1);
+                alert(text0);
+                alert(text1);
+            }, false);
+        </script>
+</body>
+</html>

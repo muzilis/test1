@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>settimeout</title>
+</head>
+<body>
+    <script>
+//        var num= 0;
+//        var max = 10;
+//        var timer = null;
+////        function aa(){
+////            num++;
+////            if(num == max){
+////                clearInterval(timer);
+////                alert(123);
+////            }
+////            console.log(num);
+////        }
+////        timer = setInterval(aa,500);
+//
+//        function aa(){
+//            num++;
+//            if(num<max){
+//                setTimeout(aa,500);
+//                console.log(num);
+//
+//            }else{
+//                alert(123);
+//            }
+//        }
+//        setTimeout(aa,500);//相对于setInterval最好使用setTimeOut
+
+
+
+        var t = true;
+        window.setTimeout(function(){
+            t = false;
+        },1000);
+        while(t){
+            console.log(1);
+        }
+        alert('end');
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

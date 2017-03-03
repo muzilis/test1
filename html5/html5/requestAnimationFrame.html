@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>requestAnimationFrame</title>
+    <style>
+        #box{
+            position:absolute ;
+            width:100px;
+            height:100px;
+            background:black;
+            left:100px;
+
+
+        }
+    </style>
+</head>
+<body>
+    <div id='box'></div>
+    <script>
+        var box = document.getElementById('box')
+        shake(box, 500, 15)
+
+        function shake(elm, dur, distance) {
+            if (elm) {
+                var dur = dur || 500
+                var distance = distance || 10
+                var original_css = elm.style.cssText
+                elm.addEventListener('click', ani, false)
+            } else {
+                return 'no param'
+            }
+
+            function ani() {
+
+                var start = null
+                requestAnimationFrame(act)
+
+                function act(time_stamp) {
+                    if (start === null) start = time_stamp
+                    var elapsed = time_stamp - start
+                    if ((elapsed / dur) < 1) {
+                        elm.style.transform = 'translateX(' + distance * Math.sin((elapsed / dur) * 4 * Math.PI) + 'px' + ')'
+                        var time_id = requestAnimationFrame(act)
+                    } else {
+                        elm.style.cssText = original_css
+                        cancelAnimationFrame(time_id)
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

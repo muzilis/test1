@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>data-</title>
+</head>
+<body>
+    <!--<div id="div" data-id="dataid"></div>-->
+
+    <!--<script>-->
+        <!--var div = document.getElementById('div');-->
+        <!--var dataid = div.dataset.id;-->
+        <!--div.dataset.dataid = 1231;-->
+        <!--if(div.dataset.dataid){-->
+            <!--alert(div.dataset.dataid);-->
+        <!--}-->
+    <!--</script>-->
+
+    <div id="div1" data-aa-xx="bb" data-cc="dd">haha</div>
+    <script>
+        var oDiv = document.querySelector('#div1');
+        //alert(oDiv.getAttribute('aa'));
+
+        console.log( oDiv.dataset.cc );//dd
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3属性选择器</title>
+    <style>
+        a[href$=\z]:after,a[href$=htm]:after,a[href$=jpg]:after{
+            content:'success';
+            color:green;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="http/">///////</a></li>
+    <li><a href="http/css3.htm">htmhtmhtmhtm</a></li>
+    <li><a href="p.jpg">jpgjpgjpgjpg</a></li>
+</ul>
+</body>
+</html>

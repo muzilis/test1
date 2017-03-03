@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点1</title>
+</head>
+<body>
+    <div id="div1">aaa</div>
+    <script>
+        var aDivs = document.getElementsByTagName('div');
+        var newDiv;
+        for(var i=0,len=aDivs.length;i<len;i++){
+            newDiv = document.createElement('div');
+            newDiv.app endChild(document.createTextNode('new div1'));
+            aDivs[i].appendChild(newDiv);
+        }
+        alert(div1.innerHTML);
+    </script>
+</body>
+</html>

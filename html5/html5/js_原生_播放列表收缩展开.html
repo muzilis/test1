@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>播放列表收缩展开</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li,ul{
+            list-style: none;
+        }
+        #container{
+            width: 200px;
+            margin: 10px auto;
+            border: solid 1px #aaa;
+        }
+        #toggle{
+            padding-left: 10px;
+            border: solid 1px #fff;
+            line-height: 30px;
+            color: #57646E;
+            background-color: #CED3D7;
+        }
+        #toggle:hover {
+            cursor: pointer;
+        }
+        #arrow{
+            float: right;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 10px;
+        }
+        #song-list {
+            font-size: 12px;
+            /*list-style: none;*/
+            background-color: #E9EDF2;
+        }
+        #song-list li a {
+            display: block;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: #6b7980;
+        }
+        #song-list li a:hover {
+            text-decoration: underline;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="toggle">播放列表...
+            <div id="arrow">▼</div>
+        </div>
+        <ul id="song-list">
+            <li><a href="javascript:void(0);">玩家之徒 - 蔡依林</a></li>
+            <li><a href="javascript:void(0);">原谅我就是这样的女生 - 戴佩妮</a></li>
+            <li><a href="javascript:void(0);">猜不透 - 丁当</a></li>
+            <li><a href="javascript:void(0);">自导自演 - 周杰伦</a></li>
+            <li><a href="javascript:void(0);">浪漫窝 - 弦子</a></li>
+            <li><a href="javascript:void(0);">流年 - 王菲</a></li>
+        </ul>
+    </div>
+    <script>
+        var toggle = document.getElementById('toggle');
+        toggle.addEventListener('click',function(){
+            var sl = document.getElementById('song-list');
+            var arrow = document.getElementById('arrow');
+            if (sl.style.display === 'none') {
+                sl.style.display = 'block';
+                arrow.innerHTML = '▼';
+            } else {
+                sl.style.display = 'none';
+                arrow.innerHTML = '▲';
+            }
+        },false);
+    </script>
+</body>
+</html>

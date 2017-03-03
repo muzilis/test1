@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js_原生_计算器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #cal {
+            position: relative;
+            width: 300px;
+            background-color: #000;
+            margin: 10px auto;
+            font: 700 24px/1.5 Arial;
+        }
+        #cal p {
+            font: 12px/20px Arial;
+            padding: 0 5px;
+            text-align: right;
+            color: #fff;
+        }
+        #ioBuffer {
+            border: 0;
+            width: 290px;
+            height: 84px;
+            text-align: right;
+            font: 700 50px/84px Arial;
+            background: url(http://pandoraui.github.io/learning-javascript/lesson3/img/inputBg.jpg) repeat-x;
+            padding: 0 5px;
+        }
+        #formula {
+            position: absolute;
+            top: 20px;
+            background: none;
+            border: 0;
+            font: 700 12px/1.5 Arial;
+            width: 280px;
+            padding: 3px 15px 0 5px;
+            text-align: right;
+        }
+        #cal ul {
+            position: relative;
+            overflow: hidden;
+            background: url(http://pandoraui.github.io/learning-javascript/lesson3/img/bg.jpg);
+            padding: 0 0 17px 8px;
+            list-style-type: none;
+        }
+        #cal ul li {
+            float: left;
+            width: 63px;
+            height: 41px;
+            margin: 17px 10px 0 0;
+            line-height: 41px;
+            text-align: center;
+            color: #fff;
+            background: url(http://pandoraui.github.io/learning-javascript/lesson3/img/btn.png) no-repeat;
+        }
+        #cal ul li:hover {
+            cursor: pointer;
+            background-position: -63px 0;
+        }
+        #cal ul li.btn-1 {
+            background-position: 0 -41px;
+        }
+        #cal ul li.btn-1:hover {
+            background-position: -63px -41px;
+        }
+        #cal ul li.btn-2 {
+            position: absolute;
+            top: 174px;
+            right: 0;
+            height: 99px;
+            line-height: 99px;
+            background-position: 0 -164px;
+        }
+        #cal ul li.btn-2:hover {
+            background-position: -63px -164px;
+        }
+        #cal ul li.btn-3 {
+            width: 136px;
+            background-position: 0 -82px;
+        }
+        #cal ul li.btn-3:hover {
+            background-position: 0 -123px;
+        }
+    </style>
+</head>
+<body>
+    <div id="cal">
+        <p>By-Levon</p>
+        <input id="formula" type="text" readonly="readonly" value="">
+        <input id="ioBuffer" type="text" readonly="readonly" value="0">
+        <ul>
+            <li class="btn-1" content="c">c</li>
+            <li class="btn-1" content="%">%</li>
+            <li class="btn-1" content="/">÷</li>
+            <li class="btn-1" content="*">×</li>
+            <li content="1">1</li>
+            <li content="2">2</li>
+            <li content="3">3</li>
+            <li class="btn-1" content="-">-</li>
+            <li content="4">4</li>
+            <li content="5">5</li>
+            <li content="6">6</li>
+            <li class="btn-1" content="+">+</li>
+            <li content="7">7</li>
+            <li content="8">8</li>
+            <li content="9">9</li>
+            <li class="btn-2" content="=">=</li>
+            <li class="btn-3" content="0">0</li>
+            <li content=".">.</li>
+        </ul>
+    </div>
+    <script>
+        var cal = document.getElementById('cal');
+        var ioBuffer = document.getElementById('ioBuffer');
+        var formula = document.getElementById('formula');
+        var lastResult = '';
+
+        function delegateEvent(delegateElement, targetTag, eventName, handler) {
+            delegateElement.addEventListener(eventName, function (event) {
+                if (targetTag.toLowerCase() === event.target.nodeName.toLowerCase()) {
+                    return handler(event);
+                }
+            }, false);
+        }
+
+        function isOverFlow(str) {
+            return str.length > 10 ? true : false;
+        }
+
+        function clear() {
+            ioBuffer.value = 0;
+            formula.value = '' ;
+        }
+
+        function addOperator(str) {
+            if (ioBuffer.value === 'ERR') {
+                return;
+            } else if (/\.$/.test(ioBuffer.value)) {
+                formula.value += (ioBuffer.value + '0');
+            } else if(/\d$/.test(ioBuffer.value)) {
+                formula.value += ioBuffer.value;
+            }
+            ioBuffer.value = str;
+            lastResult = '';
+        }
+
+        function addNum(str) {
+            if (isOverFlow(ioBuffer.value + '.')) {
+                return;
+            } else if (/[\+\-\*\/%]/.test(ioBuffer.value)) {
+                formula.value += ioBuffer.value;
+                ioBuffer.value = str;
+            } else if (/\.$/.test(ioBuffer.value)) {
+                ioBuffer.value += str;
+            } else if (/\d$/.test(ioBuffer.value) && lastResult === '') {
+                ioBuffer.value = /^0$/.test(ioBuffer.value)? str : (ioBuffer.value + str);
+            } else {
+                ioBuffer.value = str;
+                lastResult = '';
+            }
+        }
+
+        function addDot() {
+            if (/\./.test(ioBuffer.value) || isOverFlow(ioBuffer.value + '.')) {
+                return;
+            } else if (/[\+\-\*\/%]/.test(ioBuffer.value)) {
+                formula.value += ioBuffer.value;
+                ioBuffer.value = '0' + '.';
+            } else if (/\d$/.test(ioBuffer.value) && lastResult === ''){
+                ioBuffer.value += '.';
+            } else {
+                ioBuffer.value = '0' + '.';
+                lastResult = '';
+            }
+        }
+
+        function calcuate() {
+            if (lastResult === '') {
+                var conpletedFormula = formula.value + ioBuffer.value;
+                var legalFormula = conpletedFormula.match(/(.*?)[\+\-\*\/%]?$/)[1];
+                var result = eval(legalFormula);
+                if (!isFinite(result) || isNaN(result)) {
+                    ioBuffer.value = 'ERR';
+                } else {
+                    ioBuffer.value = result;
+                }
+                formula.value = '';
+                lastResult = ioBuffer.value;
+            }
+        }
+
+        delegateEvent(cal, 'li', 'click', function (event) {
+            var target = event.target;
+            var content = target.getAttribute('content');
+            if (content === 'c') {
+                clear();
+            } else if (/[\+\-\*\/%]/.test(content)) {
+                addOperator(content);
+            } else if (/\d/.test(content)) {
+                addNum(content);
+            } else if (content === '.') {
+                addDot();
+            } else if (content === '=') {
+                calcuate();
+            }
+        });
+
+
+    </script>
+</body>
+</html>

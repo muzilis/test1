@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>createElement</title>
+</head>
+<body>
+    <!--<ul id="ul1">-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+    <!--</ul>-->
+    <script>
+        var oDiv = document.createElement('div');
+        var oText = document.createTextNode('nihao');
+//        var oUl1 = document.getElementById('ul1');
+//        var aLi  = document.getElementsByTagName('li');
+//        console.log(aLi[2].nodeType);
+        oDiv.id='div1';
+        oDiv.className='aa';
+        oDiv.appendChild(oText);
+        document.body.appendChild(oDiv);
+
+    </script>
+</body>
+</html>

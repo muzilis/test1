@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>argument</title>
+</head>
+<body>
+    <script>
+        var msg = 'hello';
+        function great(name,attr){
+            var name = 'david';
+            var greating = msg + name + '!';
+            var msg = '你好';
+            for(var i=0;i<10;i++){
+                var next = msg + "你的id是" + i*2 + i;
+            }
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(greating);
+            console.log(next);
+
+        }
+
+        great('tom');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

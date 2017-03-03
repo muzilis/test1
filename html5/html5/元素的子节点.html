@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素的子节点</title>
+</head>
+<body>
+<ul id="ul1">
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+</ul>
+<script>
+    var oUl = document.getElementById('ul1');
+    for(var i= 0,len=oUl.childNodes.length;i<len;i++){
+        console.log(len);
+    }//ie len=3  其他浏览器len=7
+</script>
+</body>
+</html>

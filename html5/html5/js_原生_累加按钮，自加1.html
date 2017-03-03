@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>累加按钮，自加1</title>
+    <style>
+        #btn{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">赞</button>
+    <div>0</div>
+    <script>
+        document.getElementById('btn').addEventListener('click', function (e) {
+            var target = e.target;
+            var result = parseInt(target.textContent);
+            target.textContent = ++result;
+            console.log(target.textContent);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>client</title>
+</head>
+<body>
+
+<script>
+
+    function getViewport(){
+        if(document.compatMode == 'BackCompat'){
+            return {
+              width:document.body.clientWidth,
+              height:document.body.clientHeight
+            };//混杂模式
+        }else{
+            return {
+                width:document.documentElement.clientWidth,
+                height:document.documentElement.clientHeight
+            };
+        }
+    }
+    getViewport();
+    console.log(getViewport());
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

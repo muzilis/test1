@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度输入法</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        #main{
+            position: relative;
+            width: 100px;
+            margin:10px auto;
+        }
+        #btn{
+            cursor: pointer;
+        }
+        #menu{
+            display: none;
+            position: absolute;
+            width: 80px;
+            margin-top: 5px;
+            border: solid 1px #9A99FF;
+            font-size: 14px;
+            list-style: none;
+            color: blue;
+            background-color: #fff;
+        }
+        #menu li:hover{
+            background-color: #D9E1F6;
+            cursor: pointer;
+        }
+        #menu a{
+            display: block;
+            padding: 5px;
+            text-decoration: none;
+            color: blue;
+        }
+        #close {
+            padding: 5px;
+            border-top: solid 1px #9A99FF;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <button id="btn">输入法</button>
+        <ul id="menu">
+            <li><a href="javascript:void(0);">手写</a></li>
+            <li><a href="javascript:void(0);">拼音</a></li>
+            <li id="close">关闭</li>
+        </ul>
+    </div>
+    <script>
+        var btn = document.getElementById('btn');
+        var menu = document.getElementById('menu');
+        var close = document.getElementById('close');
+        btn.addEventListener('click',function(){
+            if(menu.style.display === 'block'){
+                menu.style.display = 'none';
+            }else{
+                menu.style.display = 'block'
+            }
+        },false);
+        close.addEventListener('click',function(){
+            menu.style.display = 'none';
+        },false);
+    </script>
+</body>
+</html>

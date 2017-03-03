@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+</head>
+<body>
+<!--<script>-->
+    <!--function stop(event){-->
+        <!--alert(123);-->
+        <!--return false;-->
+    <!--}-->
+
+<!--</script>-->
+<!--<a href="http://qq.com" onclick="return stop();">http://qq.com</a>-->
+
+    <!--<div id="btn">aaaa</div>-->
+
+<!--<script>-->
+    <!--var oBtn = document.getElementById('btn');-->
+    <!--function sayHi(){-->
+        <!--alert('hi');-->
+    <!--}-->
+    <!--function sayBye(){-->
+        <!--alert('bye');-->
+    <!--}-->
+    <!--function aa(){-->
+        <!--alert('aa');-->
+    <!--}-->
+<!--//    sayHi();-->
+<!--//    console.log(sayHi());-->
+
+<!--//    oBtn.onclick = sayHi;-->
+    <!--oBtn.addEventListener('click',sayHi,false);-->
+    <!--oBtn.addEventListener('click',sayBye,true);-->
+<!--//    oBtn.addEventListener('click',sayHi,false);//覆盖-->
+    <!--oBtn.addEventListener('click',aa,false);-->
+<!--//    oBtn.addEventListener('click',aa,false);//覆盖-->
+
+<!--</script>-->
+
+
+
+<!--<div id="btn1" style="width: 200px;height: 200px;background: #f00;">-->
+    <!--<div id="btn2" style="width: 100px;height: 100px;background: rgb(0,255,0);">-->
+
+    <!--</div>-->
+<!--</div>-->
+
+<!--<script>-->
+    <!--var oBtn1 = document.getElementById('btn1');-->
+    <!--var oBtn2 = document.getElementById('btn2');-->
+    <!--oBtn1.onclick = function(){-->
+        <!--alert('red');-->
+    <!--}-->
+<!--</script>-->
+
+<!--<a href="http://qq.com" id="foo">http://qq.com</a>-->
+
+<!--<script>-->
+    <!--var foo = document.getElementById('foo');-->
+    <!--function say(event){-->
+        <!--alert(event.type);-->
+        <!--event.preventDefault();//等同于return false-->
+    <!--}-->
+    <!--foo.addEventListener('click',say,false);-->
+<!--</script>-->
+
+
+<!--<div id="div">123jhgjh</div>-->
+<!--<script>-->
+    <!--var div = document.getElementById('div');-->
+    <!--var handler = function(event){-->
+        <!--switch(event.type){-->
+            <!--case 'click':-->
+                <!--alert('click');-->
+                <!--break;-->
+            <!--case 'mouseover':-->
+                <!--event.target.style.backgroundColor = 'red';-->
+
+                    <!--alert(123);-->
+                <!--break;-->
+            <!--case 'mouseout':-->
+                <!--event.target.style.backgroundColor = 'green';-->
+                <!--break;-->
+        <!--}-->
+    <!--}-->
+    <!--div.onclick = handler;-->
+    <!--div.onmouseover = handler;-->
+    <!--div.onmouseout = handler;-->
+
+<!--</script>-->
+
+
+<!--<div id="myDiv">-->
+    <!--<input type="button" id="myBtn" value="click me">-->
+<!--</div>-->
+
+
+<!--<script>-->
+    <!--var btn = document.getElementById('myBtn');-->
+    <!--btn.onclick = function(){-->
+<!--//        alert(123);-->
+        <!--btn.onclick = null;//确保内存可以被再次利用-->
+        <!--document.getElementById('myDiv').innerHTML = "</br>new content";-->
+    <!--}-->
+<!--</script>-->
+
+    <ul id="ul">
+        <li>red</li>
+        <li>yellow</li>
+        <li>blue</li>
+        <li>green</li>
+        <li>black</li>
+        <li>white</li>
+    </ul>
+
+    <script>
+//        (function(){
+//            var ul = document.getElementById('ul');
+//            var aLi = ul.getElementsByTagName('li');
+//            for(var i=0;i<aLi.length;i++){
+//                aLi[i].addEventListener('click',showColor,false);
+//            };
+//            function showColor(e){
+//                var x = e.target;
+//                alert('this is a color ' +  x.innerHTML);
+//            }
+//        })();
+
+        (function(){
+            var ul = document.getElementById('ul');
+            ul.addEventListener('click',showColor,false);
+            function showColor(e){
+                var x = e.target;
+                if(x.nodeName.toLowerCase()=='li'){
+                 alert('this is a color ' +  x.innerHTML);
+
+                }
+            }
+
+        })();//性能好
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

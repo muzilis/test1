@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>insertBefore</title>
+</head>
+<body>
+<script>
+    var elem = document.createElement('div');
+    var oLi = document.createElement('li');
+    var text = document.createTextNode('this is a new div');
+    document.body.appendChild(elem);
+    elem.appendChild(text);
+    elem.appendChild(oLi);
+    var comment = document.createComment('this is a comment');
+    document.body.insertBefore(comment,elem);
+</script>
+</body>
+</html>
